@@ -117,7 +117,7 @@ if(isset($_SESSION['theme'])) {
             // Login form
             ?>
 
-            <form id="login" method="post" style="position: fixed; width: 350px; top: 30%; left: 50%; margin-left: -175px; padding: 35px;">
+            <form id="login" method="post" style="position: fixed; width: 350px; top: 30%; right: 30%; margin-right: -175px; padding: 35px;">
 
                 <label><span class="icon-user login-icon"></span> Username</label>
                 <input type="text" name="username" autofocus="autofocus" autocomplete="off">
@@ -159,6 +159,15 @@ if(isset($_SESSION['theme'])) {
 
             </form>
 
+            <form id="login" method="post" style="position: fixed; width: 350px; top: 30%; left: 30%; margin-left: -175px; padding: 35px;">
+	                <label><span class="icon-user login-icon"></span> Reason or view public repository</label>
+	                <input type="text" disabled="disabled" name="username" autofocus="autofocus" autocomplete="off" value="public">
+	                <label><span class="icon-user login-icon"></span> &nbsp;</label>
+					<input type="password" disabled="disabled" name="password" value="public">
+	               <div style="float:left" ><button>Login</button></div><div style="float:right"><button onclick="window.location='./list.php'; return false;">View Repository</button></div>
+					
+            </form>
+			
             <script src="components/user/init.js"></script>
             <?php
 
