@@ -17,7 +17,7 @@ define("BASE_PATH", "/var/www/Codiad");
 define("BASE_URL", "localhost/Codiad");
 
 // THEME : default, modern or clear (look at /themes)
-define("THEME", "Codiad-Theme-Clear-master");
+define("THEME","clear");
 
 // ABSOLUTE PATH
 define("WHITEPATHS", BASE_PATH . ",/home");
