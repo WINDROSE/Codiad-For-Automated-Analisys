@@ -131,24 +131,36 @@
                     .hide();
                 break;
             case 'file':
-                $('#context-menu .directory-only, #context-menu .root-only')
-                    .hide();
-                $('#context-menu .file-only,#context-menu .non-root')
-                    .show();
-                break;
+				
+					
+                $('#context-menu .directory-only, #context-menu .root-only').hide()//hide if extension only
+                $('#context-menu .file-only, #context-menu .non-root').show();
+				
+				//Adding this to enable filtering by extension in the pluggin system
+				var withExtension=$('#context-menu .extension-only');
+			   withExtension.each(function() {
+			     if($(this).hasClass(_this.getExtension(path))){
+					 $(this).show();
+			     }else{
+			     	 $(this).hide();
+			     }
+			   });
+	
+			    break;
             case 'root':
                 $('#context-menu .directory-only, #context-menu .root-only')
                     .show();
                 $('#context-menu .non-root, #context-menu .file-only')
                     .hide();
                 break;
-            }
+			}
             if(codiad.project.isAbsPath($('#file-manager a[data-type="root"]').attr('data-path'))) {
                 $('#context-menu .no-external').hide();
             } else {
                 $('#context-menu .no-external').show();
             }
-            // Show menu
+			
+			// Show menu
             var top = e.pageY;
             if (top > $(window).height() - $('#context-menu').height()) {
                 top -= $('#context-menu').height()+30;
@@ -219,6 +231,11 @@
         getType: function(path) {
             return $('#file-manager a[data-path="' + path + '"]')
                 .attr('data-type');
+        },
+
+        getClass: function(path) {
+            return $('#file-manager a[data-path="' + path + '"]')
+                .attr('class');
         },
 
         //////////////////////////////////////////////////////////////////
