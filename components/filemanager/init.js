@@ -129,6 +129,9 @@
                     .show();
                 $('#context-menu .file-only, #context-menu .root-only')
                     .hide();
+					
+				$('#context-menu .extension-only').hide();
+				
                 break;
             case 'file':
 				
@@ -152,6 +155,8 @@
                     .show();
                 $('#context-menu .non-root, #context-menu .file-only')
                     .hide();
+				$('#context-menu .extension-only').hide();
+					
                 break;
 			}
             if(codiad.project.isAbsPath($('#file-manager a[data-type="root"]').attr('data-path'))) {

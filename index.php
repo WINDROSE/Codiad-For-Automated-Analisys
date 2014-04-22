@@ -26,7 +26,7 @@ if(isset($_SESSION['theme'])) {
 
 <head>
     <meta charset="utf-8">
-    <title>CODIAD</title>
+    <title>WINDROSE | A Codiad based IDE</title>
     <?php
     // Load System CSS Files
     $stylesheets = array("jquery.toastmessage.css","reset.css","fonts.css","screen.css");
@@ -116,9 +116,11 @@ if(isset($_SESSION['theme'])) {
         }else{
             // Login form
             ?>
-
-            <form id="login" method="post" style="position: fixed; width: 350px; top: 30%; right: 30%; margin-right: -175px; padding: 35px;">
-
+			<div style="position: fixed; width: 350px; top: 25%; right: 30%; margin-right: -175px; padding: 35px;">
+			
+			<center><font size="6">Closed repo access to WINDROSE</font>	</center>
+            <form id="login" method="post" >
+				
                 <label><span class="icon-user login-icon"></span> Username</label>
                 <input type="text" name="username" autofocus="autofocus" autocomplete="off">
 
@@ -158,16 +160,21 @@ if(isset($_SESSION['theme'])) {
                 <a class="show-language-selector">More</a>
 
             </form>
-
-            <form id="login" method="post" style="position: fixed; width: 350px; top: 30%; left: 30%; margin-left: -175px; padding: 35px;">
-	                <label><span class="icon-user login-icon"></span> Reason or view public repository</label>
-	                <input type="text" disabled="disabled" name="username" autofocus="autofocus" autocomplete="off" value="public">
-	                <label><span class="icon-user login-icon"></span> &nbsp;</label>
-					<input type="password" disabled="disabled" name="password" value="public">
-	               <div style="float:left" ><button>Login</button></div><div style="float:right"><button onclick="window.location='./list.php'; return false;">View Repository</button></div>
+		</div>
+			<div style="position: fixed; width: 350px; top: 25%; left: 30%; margin-left: -175px; padding: 35px;">
+				<center><font size="6">Open repo access to WINDROSE</font></center>	
+				
+            <form id="loginPublic" method="post" >
+	                <label><span class="icon-user login-icon"></span> Reason over models in the public repo</label>
+	                <input type="text"  name="username" autofocus="autofocus" autocomplete="off" value="public" readonly="readonly">
+	                <label><span class="icon-lock login-icon"></span> &nbsp;</label>
+					<input type="password" name="password" value="public" readonly="readonly">
+                 
+                 
+				   <div style="float:left" ><button>Free Login</button></div><div style="float:right"><button onclick="window.location='./list.php'; return false;">View Repository</button></div>
 					
             </form>
-			
+			</div>
             <script src="components/user/init.js"></script>
             <?php
 

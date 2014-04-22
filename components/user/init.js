@@ -15,6 +15,7 @@
     codiad.user = {
 
         loginForm: $('#login'),
+		loginFormPublic:$('#loginPublic'),
         controller: 'components/user/controller.php',
         dialog: 'components/user/dialog.php',
 
@@ -33,6 +34,15 @@
                 _this.authenticate();
             });
             
+            this.loginFormPublic.on('submit', function(e) {
+                e.preventDefault();
+                // Save Language
+                localStorage.setItem('codiad.language', $("#language").val());
+                // Save Theme
+                localStorage.setItem('codiad.theme', $("#theme").val());
+                _this.authenticatePublic();
+            });
+			
             // Get Theme
             var theme = localStorage.getItem('codiad.theme');
             $("#theme option").each(function()
@@ -72,6 +82,16 @@
             });
         },
 
+        authenticatePublic: function() {
+            $.post(this.controller + '?action=authenticate', this.loginFormPublic.serialize(), function(data) {
+                parsed = codiad.jsend.parse(data);
+                if (parsed != 'error') {
+                    // Session set, reload
+                    window.location.reload();
+                }
+            });
+        },
+		
         //////////////////////////////////////////////////////////////////
         // Logout
         //////////////////////////////////////////////////////////////////
